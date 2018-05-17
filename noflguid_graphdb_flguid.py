@@ -9,7 +9,7 @@ from pyspark.streaming.kafka import KafkaUtils
 from kafka import KafkaProducer
 from gremlin_python.driver import client, serializer
 
-producer = KafkaProducer(bootstrap_servers='localhost:9092')
+producer = KafkaProducer(bootstrap_servers='ec2-52-203-200-3.compute-1.amazonaws.com:9092')
 client = client.Client('wss://sparkkafka.gremlin.cosmosdb.azure.com:443/', 'g',
                        username="/dbs/sparkkafka_db/colls/sparkkafka_graph",
                        password="zRY7IuiIF4mBXdKAiKQlZpdKQvT7v0La8HyGE6DtcQT9wWKHLUWxSniCP4AkiYEbHeeNTIe2c5C92ivleLjbUQ==",
@@ -105,7 +105,7 @@ def main():
     ssc = StreamingContext(sc, 20)
 
     #brokers, topic = sys.argv[1:]
-    kvs = KafkaUtils.createDirectStream(ssc, ["events.noflguid"], {"metadata.broker.list": "localhost:9092"})
+    kvs = KafkaUtils.createDirectStream(ssc, ["events.noflguid"], {"metadata.broker.list": "ec2-52-203-200-3.compute-1.amazonaws.com:9092"})
     #kvs = KafkaUtils.createDirectStream(ssc, [topic], {"metadata.broker.list": brokers})
 
     lines = kvs.map(lambda x: x[1])
