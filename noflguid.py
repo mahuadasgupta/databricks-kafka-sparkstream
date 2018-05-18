@@ -14,8 +14,7 @@ if __name__ == "__main__":
     #ssc.checkpoint("c:\Playground\spark\logs")
     brokers, topic = sys.argv[1:]
  
-    kvs = KafkaUtils.createDirectStream(ssc, [topic],
-{"metadata.broker.list": brokers})
+    kvs = KafkaUtils.createDirectStream(ssc, ["events.noflguid"],{"metadata.broker.list":"ec2-52-203-200-3.compute-1.amazonaws.com:9092"})
 
     print(str(brokers))
     print(str(topic))
