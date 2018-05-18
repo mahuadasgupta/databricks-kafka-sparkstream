@@ -8,7 +8,7 @@ from pyspark.sql.context import SQLContext
 
 
 if __name__ == "__main__":
-    sc = SparkContext("local", "wordcount")
+    sc = SparkContext("local", "wordcounttest")
     #sc.setLogLevel(logLevel="OFF")
     ssc = StreamingContext(sc, 20)
     #ssc.checkpoint("c:\Playground\spark\logs")
